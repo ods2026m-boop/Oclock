@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=OClock
+GenericName=Clock
+Comment=Clock, world clock, alarms, timers and a stopwatch
+Keywords=clock;world clock;alarm;timer;stopwatch;countdown;time;date;reminder;
+Exec=oclock
+TryExec=oclock
+Icon=org.odsos.OClock
+Terminal=false
+StartupNotify=true
+Categories=Clock;Utility;
+# Iced 0.13 exposes no way to set the X11 WM_CLASS, so the window reports an
+# empty one. Declaring the class the binary would carry lets a compositor that
+# matches on it associate the running window with this entry; the window title
+# and the window icon, which are set in `main.rs`, carry the identity on the
+# compositors that match on those instead.
+StartupWMClass=oclock

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OClock — the symbolic icon.
+
+  The `symbolic` context of the icon theme is the one variant meant to be
+  recoloured by whatever draws it: a panel, a window title bar, a menu row. So
+  it is drawn on the 16×16 grid the convention asks for, and the subject is
+  reduced to what survives that size — a ring for the face and two hands.
+
+  The stroke is given a colour rather than left to the default, because an
+  unset stroke is `none` and the icon would render as nothing at all to any
+  consumer that does not recolour it. A themer that does follow the symbolic
+  convention overrides this colour for its own foreground.
+
+  The artwork is OClock's own, drawn for this application and not derived from
+  any icon set, so it is covered by the BSD 3-Clause licence in the
+  repository's `LICENSE`.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g fill="none" stroke="#2b2b30" stroke-width="1.4" stroke-linecap="round">
+    <circle cx="8" cy="8" r="6.3"/>
+    <line x1="8" y1="8" x2="5" y2="5.6"/>
+    <line x1="8" y1="8" x2="11.4" y2="4.6"/>
+  </g>
+</svg>

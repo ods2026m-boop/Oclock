@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OClock — the authoritative icon artwork.
+
+  Every other OClock icon is generated from this file; nothing is drawn by
+  hand twice. See `../render.py`.
+
+  The shape is the application's own clock face: a filled disc, a rim, and two
+  hands. The colours are the light palette's accent, carried for the disc,
+  with the rim and the hands lightened off it — the palette's own `text` and
+  `text_muted` are foregrounds for the near-white *surface* and are
+  unreadable on the accent:
+
+      disc    #4F46E5   design::palette::Palette::LIGHT.accent
+      hub     #4F46E5   the disc again, so the two hands read as two
+      rim     #9E99F0   white at 45% over the disc
+      hands   #FFFFFF   white on the disc: 6.3:1
+
+  The hands are deliberately unequal in length and not symmetric about the
+  vertical, which is what a clock showing about ten past ten actually looks
+  like — equal hands at mirrored angles read as a chevron rather than as a
+  time. The proportions are rounded to survive sixteen pixels, the smallest
+  size a launcher, a panel and a window title bar all ask for: the rim is
+  40/512 of the width, so it is still a full pixel there.
+
+  The artwork is OClock's own, drawn for this application and not derived from
+  any icon set, so it is covered by the BSD 3-Clause licence in the
+  repository's `LICENSE` — as are the PNGs rendered from it.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="OClock">
+  <title>OClock</title>
+  <desc>A clock face with its hands at ten past ten, in OClock's indigo.</desc>
+
+  <!-- The face. -->
+  <circle cx="256" cy="256" r="232" fill="#4F46E5"/>
+
+  <!-- The rim, flush with the edge of the face. -->
+  <circle cx="256" cy="256" r="212" fill="none" stroke="#9E99F0" stroke-width="40"/>
+
+  <!-- The hands. Round caps, so the ends read as hands rather than as bars. -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round">
+    <line x1="256" y1="256" x2="158" y2="174"/>
+    <line x1="256" y1="256" x2="407" y2="169"/>
+  </g>
+
+  <!-- The hub, in the face's own colour, at exactly the hands' half-width so
+       it caps their joint flush instead of biting into them. -->
+  <circle cx="256" cy="256" r="18" fill="#4F46E5"/>
+</svg>

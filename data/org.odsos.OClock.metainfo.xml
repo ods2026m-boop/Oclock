@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AppStream metadata for OClock, so a software centre and a desktop's
+  application list can describe the application rather than only list it.
+
+  The <id> is the freedesktop application ID and must match the desktop
+  entry's filename and the icon's name, without the extensions. It is the one
+  string the three files have to agree on, and `tests/packaging.rs` checks
+  that they do.
+
+  The capital `C` trips `appstreamcli validate`'s pedantic rules, which prefer
+  a lower-case identifier. Reverse-DNS identifiers are conventionally lower
+  case, but the capital is kept: it is the application's actual name,
+  `org.gnome.Software` sets the same precedent, and the check is a hint rather
+  than an error. The plain validation this project gates on passes.
+-->
+<component type="desktop-application">
+  <id>org.odsos.OClock</id>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>BSD-3-Clause</project_license>
+
+  <name>OClock</name>
+  <summary>Clock, world clock, alarms, timers and a stopwatch</summary>
+
+  <description>
+    <p>
+      OClock is the ODS-os clock application: a clock, a world clock, alarms,
+      timers and a stopwatch in one window.
+    </p>
+    <ul>
+      <li>A clock to the second, with an analog dial, 12- or 24-hour reading, and light or dark</li>
+      <li>A world clock with any number of cities, each with its own analog face and UTC offset</li>
+      <li>Alarms that repeat on chosen days, survive sleep and a changed system clock, and snooze</li>
+      <li>Countdown timers, several at once, with a preset strip and a progress ring</li>
+      <li>A stopwatch with lap times, at centisecond resolution</li>
+    </ul>
+    <p>
+      It speaks twelve languages, three of them written from the right, and
+      follows the desktop's light or dark preference or the one you choose.
+      Every control is reachable from the keyboard.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">org.odsos.OClock.desktop</launchable>
+
+  <categories>
+    <category>Clock</category>
+    <category>Utility</category>
+  </categories>
+
+  <keywords>
+    <keyword>clock</keyword>
+    <keyword>world clock</keyword>
+    <keyword>alarm</keyword>
+    <keyword>timer</keyword>
+    <keyword>stopwatch</keyword>
+    <keyword>countdown</keyword>
+  </keywords>
+
+  <provides>
+    <binary>oclock</binary>
+  </provides>
+
+  <developer id="org.odsos">
+    <name>ODS</name>
+  </developer>
+  <!--
+    No <url> elements are declared, and that is deliberate.
+
+    AppStream's optional `<url type="homepage">`, `<url type="bugtracker">` and
+    `<url type="repository">` each want the project's real location, and this
+    project does not carry one: nothing in the repository, the Cargo metadata or
+    the packaging data states where OClock is hosted or who to report a bug to.
+    A URL written from the project's name or its application's ID would be a
+    guess that looks authoritative, and a guess that a software centre would
+    render as a working link.
+
+    So none is written. Each of these fields is optional, and the absence is the
+    honest answer; `tests/packaging.rs` checks that none has been invented.
+  -->
+
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+
+  <requires>
+    <display_length compare="ge">680</display_length>
+  </requires>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <!--
+      `version` matches the crate in Cargo.toml, and `date` is the day that
+      version was written rather than the day this document was last edited: a
+      release date that moves every time a sentence is corrected tells a reader
+      nothing.
+    -->
+    <release version="0.1.0" date="2026-09-29">
+      <description>
+        <p>
+          The first release of OClock: a clock, a world clock, alarms, countdowns
+          and a stopwatch in one window, in twelve languages, and following the
+          desktop's light or dark preference of its own accord.
+        </p>
+        <p>
+          Everything is reachable from the keyboard, every measurement runs on
+          the monotonic clock so it stays right across a sleep, and nothing the
+          application stores needs a network to work.
+        </p>
+      </description>
+    </release>
+  </releases>
+</component>

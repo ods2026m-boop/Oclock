@@ -1,0 +1,57 @@
+[package]
+name = "oclock"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "OClock — the ODS-os clock application: clock, world clock, alarms, timer and stopwatch"
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = ["clock", "alarm", "timer", "stopwatch", "world clock", "ods-os"]
+categories = ["gui"]
+default-run = "oclock"
+# A packaged crate has to carry its desktop integration, or installing it from
+# a registry gives a binary with no icon and no launcher entry. `tests/` is
+# listed because `tests/packaging.rs` checks those files.
+include = [
+    "src/**/*.rs",
+    "tests/**/*.rs",
+    "data/**",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE",
+]
+
+[[bin]]
+name = "oclock"
+path = "src/main.rs"
+
+[dependencies]
+# GUI toolkit
+iced = { version = "0.13.1", features = ["canvas", "tokio", "advanced"] }
+# Iced's own graphics layer, for the font system and paragraph metrics: text has
+# to be measured by the shaper that will draw it, or the two disagree.
+iced_graphics = "0.13"
+
+# Date / time / time zones
+chrono = { version = "0.4.41", default-features = false, features = ["clock", "std", "serde"] }
+chrono-tz = { version = "0.10.4", default-features = false, features = ["std"] }
+
+# Persistence
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+dirs = "5.0.1"
+
+# System integration
+dark-light = "1.1.1"
+notify-rust = { version = "4.11.0", default-features = false, features = ["z"] }
+cpal = "0.15.3"
+
+# Fuzzy search for the world clock city picker
+sublime_fuzzy = "0.7.0"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true
